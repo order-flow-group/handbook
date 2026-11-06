@@ -1,0 +1,183 @@
+title,description
+F0-01 ADR-001: backend dili (.NET 10 vs Go),"**Repo:** handbook
+
+## Neden
+Backend servislerinin dilini kayıtlı bir kararla seçmek.
+
+## Kabul kriterleri
+- [ ] `handbook/adr/001-backend-dili.md` yazıldı (`/adr` skill'i ile)
+- [ ] .NET 10 ve Go en az 4 kriterle karşılaştırıldı
+- [ ] Karar ve gerekçe açık, durum: Kabul edildi
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:docs"" ~""size:S"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-02 Yerel geliştirme ortamını kur,"**Repo:** handbook
+
+## Neden
+Tüm araçların çalıştığından emin olmak.
+
+## Kabul kriterleri
+- [ ] git config + `init.defaultBranch main`
+- [ ] ed25519 anahtarı GitLab ve GitHub'da; `ssh -T git@gitlab.com` başarılı
+- [ ] `docker run hello-world`, `claude --version`, `glab auth status` çalışıyor
+- [ ] VS Code eklentileri kurulu
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:M"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+"F0-03 GitLab group, label, milestone ve board","**Repo:** handbook
+
+## Neden
+Jira benzeri iş takibini kurmak.
+
+## Kabul kriterleri
+- [ ] `orderflow` + `platform`, `commerce`, `ai` subgroup'ları
+- [ ] `scripts/create-labels.sh` çalıştırıldı
+- [ ] F0–F8 milestone'ları var
+- [ ] Board: Backlog, Ready, Doing, Review, Done
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:S"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-04 handbook reposu + Claude kit,"**Repo:** handbook
+
+## Neden
+Claude ile çalışma kurallarını tek yerde tutmak.
+
+## Kabul kriterleri
+- [ ] handbook reposu açıldı
+- [ ] CLAUDE.md, .claude/ (skills, agents, hooks, settings) commit'lendi
+- [ ] Claude Code'da `/start-issue` ve diğer skill'ler görünüyor
+- [ ] `.gitlab/` şablonları commit'lendi
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:M"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-05 GitHub aynası,"**Repo:** handbook
+
+## Neden
+Projeyi GitHub'da vitrin olarak göstermek.
+
+## Kabul kriterleri
+- [ ] GitHub `orderflow` organization'ı açıldı
+- [ ] Fine-grained token ile push mirror kuruldu
+- [ ] GitLab commit'i 5 dk içinde GitHub'da
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:S"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-06 Kendi GitLab Runner'ını kur,"**Repo:** handbook
+
+## Neden
+Ücretsiz CI dakika sınırına takılmamak.
+
+## Kabul kriterleri
+- [ ] Docker executor ile runner kuruldu
+- [ ] Group runner olarak kayıtlı, `orderflow` tag'i var
+- [ ] Deneme job'ı bu runner'da yeşil
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:M"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-07 CI şablonları,"**Repo:** ci-templates
+
+## Neden
+Her repoda aynı pipeline'ı tek yerden yönetmek.
+
+## Kabul kriterleri
+- [ ] `lint`, `test`, `build`, `docker-build`, `secret-scan` (gitleaks) job şablonları
+- [ ] Bir repo `include: project:` ile kullanıyor
+- [ ] README'de kullanım örneği
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:L"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-08 contracts iskeleti + health OpenAPI,"**Repo:** contracts
+
+## Neden
+Sözleşme-önce çalışmanın temeli.
+
+## Kabul kriterleri
+- [ ] `openapi/order-service.yaml` health endpoint'leriyle
+- [ ] CI'da spec lint (Spectral/Redocly) yeşil
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:feature"" ~""size:S"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-09 order-service iskeleti + health endpoint'leri,"**Repo:** order-service
+
+## Neden
+Yürüyen iskeletin ilk servisi.
+
+## Kabul kriterleri
+- [ ] README, .gitignore, .editorconfig, .env.example, Makefile, LICENSE
+- [ ] `/health/live` 200, `/health/ready` DB bağlıyken 200
+- [ ] `/metrics` Prometheus formatında
+- [ ] En az 2 birim testi
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:feature"" ~""size:L"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-10 order-service Dockerfile + yeşil pipeline,"**Repo:** order-service
+
+## Neden
+Servisi image olarak üretmek.
+
+## Kabul kriterleri
+- [ ] Multi-stage, non-root, image < 150 MB
+- [ ] Pipeline: lint → test → build → image push yeşil
+- [ ] Image Container Registry'de
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:M"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-11 local-dev compose: order-service + Postgres,"**Repo:** local-dev
+
+## Neden
+Tüm sistemi tek komutla ayağa kaldırmak.
+
+## Kabul kriterleri
+- [ ] `make up` iki servisi başlatıyor, healthcheck'ler tanımlı
+- [ ] `curl localhost:8081/health/ready` 200
+- [ ] `make down -v` temizliyor
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:chore"" ~""size:M"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
+F0-12 Faz 0 retrosu + LinkedIn #1,"**Repo:** handbook
+
+## Neden
+Süreci kaydetmek ve paylaşmak.
+
+## Kabul kriterleri
+- [ ] `handbook/retro/F0.md` (iyi, zor, tahmin vs gerçek)
+- [ ] LinkedIn gönderisi yayınlandı
+
+## Kapsam dışı
+İş mantığı yok (Faz 1).
+
+/label ~""type:article"" ~""size:S"" ~""status:ready""
+/milestone %""F0 Yürüyen iskelet"""
