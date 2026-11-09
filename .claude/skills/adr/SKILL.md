@@ -6,7 +6,9 @@ argument-hint: <karar konusu — ör. "backend dili: .NET 10 vs Go">
 
 # ADR: $ARGUMENTS
 
-1. `handbook/adr/` içindeki en büyük numarayı bul, bir sonrakini kullan (`NNN-kebab-baslik.md`).
+> `<handbook>` = handbook reposunun kökü: şu an handbook reposundaysan `.`, başka bir repodaysan `../handbook`. Klasör yoksa oluştur.
+
+1. `<handbook>/adr/` içindeki en büyük numarayı bul, bir sonrakini kullan (`NNN-kebab-baslik.md`).
 2. Karar vermeden önce bana 3–5 soru sor (deneyimim, zaman, hedef iş ilanları, kısıtlar).
 3. [template.md](template.md) şablonunu doldur. Kurallar:
    - En az 2, en fazla 4 seçenek.

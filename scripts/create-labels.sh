@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
 # OrderFlow group label'larını ve milestone'larını oluşturur.
 # Gereksinim: glab auth login yapılmış olmalı.
-# Kullanım: GROUP=orderflow bash scripts/create-labels.sh
-set -euo pipefail
-GROUP="${GROUP:-orderflow}"
+# Kullanım: GROUP=order-flow-group bash scripts/create-labels.sh
+set -uo pipefail
+GROUP="${GROUP:-order-flow-group}"
 G=$(printf '%s' "$GROUP" | sed 's#/#%2F#g')
 
+# Sonucu yorumla: başarı ✓, zaten var •, gerçek hata ✗ + mesaj
+report() { # ad çıktı çıkış-kodu
+  if [ "$3" -eq 0 ]; then echo "✓ $1"
+  elif printf '%s' "$2" | grep -qi "already"; then echo "• $1 (zaten var)"
+  else echo "✗ $1 → $2"; fi
+}
+
 label() { # ad renk açıklama
-  glab api -X POST "groups/$G/labels" -f name="$1" -f color="$2" -f description="$3" >/dev/null \
-    && echo "✓ $1" || echo "• $1 (zaten var olabilir)"
+  out=$(glab api -X POST "groups/$G/labels" -f name="$1" -f color="$2" -f description="$3" 2>&1); rc=$?
+  report "$1" "$out" $rc
 }
 
 label "type:feature" "#1f75cb" "Yeni davranış"
@@ -32,8 +39,10 @@ label "learn:k8s"    "#326ce5" "Kubernetes öğrenme"
 label "learn:agents" "#8a2be2" "Agent/RAG/MCP öğrenme"
 
 # Milestone'lar (haftada ~25 saat varsayımı; tarihleri kendine göre kaydır)
-ms() { glab api -X POST "groups/$G/milestones" -f title="$1" -f start_date="$2" -f due_date="$3" -f description="$4" >/dev/null \
-  && echo "✓ $1" || echo "• $1 (zaten var olabilir)"; }
+ms() {
+  out=$(glab api -X POST "groups/$G/milestones" -f title="$1" -f start_date="$2" -f due_date="$3" -f description="$4" 2>&1); rc=$?
+  report "$1" "$out" $rc
+}
 ms "F0 Yürüyen iskelet"        2026-11-09 2026-11-18 "Repo, CI, runner, /health"
 ms "F1 Sipariş happy path"     2026-11-19 2026-12-02 "Order API, idempotency"
 ms "F2 Stok, ödeme, event'ler" 2026-12-03 2026-12-16 "Outbox, saga, DLQ, CB"

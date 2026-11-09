@@ -19,6 +19,9 @@ Sıra önemlidir; atlama.
 3. **Test önce.** Kabul kriterlerini karşılayan testleri yaz: 1 happy path, en az 2 hata yolu
    (400 validasyon, 404/409). Entegrasyon testi Testcontainers ile gerçek Postgres kullanır.
 4. **Uygulama.** Handler → servis/uygulama katmanı → repository. İş kuralı handler'da olmaz.
+   Endpoint çekirdek koda dokunuyorsa (Idempotency-Key kontrolü, outbox yazımı, saga adımı, stok
+   rezervasyonu) DUR: CLAUDE.md'deki "çekirdek kodu ben yazarım" kuralı geçerli. İskeleti ve testleri
+   bırak, çekirdeği geliştiriciye yazdır, sonra review et.
 5. **Gözlemlenebilirlik.** Log (correlation_id), metrik (istek sayısı, süre histogramı), trace span.
 6. **Doğrula.** `make lint test`; servisi çalıştırıp `curl` ile örnek istek at, çıktıyı göster.
 7. **Doküman.** README'deki endpoint tablosunu ve `.http` örnek dosyasını güncelle.
