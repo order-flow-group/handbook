@@ -30,7 +30,8 @@ Junior geliştiriciyim ve öğrenmek için buradayım.
 Klasör henüz yoksa ilk dosyayla birlikte oluştur.
 
 ## Yazım kuralları
-- Yazılar Türkçe; teknik terimler (outbox, saga, idempotency) çevrilmez. Commit mesajları da Türkçe olabilir.
+- Yazılar Türkçe; teknik terimler (outbox, saga, idempotency) çevrilmez. 
+- Commit mesajları ve MR başlıkları İngilizce (Conventional Commits).
 - Kısa paragraflar, somut örnekler. ADR'de bilinmeyen rakam için "ölçülecek" yaz ve spike issue öner;
   makalede ise rakam yoksa yazma (`/write-article` önce ölçüm ister).
 - Her ADR'de en az 2 seçenek ve her seçeneğin olumsuz tarafı.
