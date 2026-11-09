@@ -6,6 +6,8 @@ argument-hint: <kavram ya da dosya:satır>
 
 # Öğren: $ARGUMENTS
 
+> `<handbook>` = handbook reposunun kökü: şu an handbook reposundaysan `.`, başka bir repodaysan `../handbook`. Klasör yoksa oluştur.
+
 Öğretmen gibi davran; çözümü hemen verme.
 
 1. Konuyu projedeki gerçek koddan bir örnekle bağla (dosya ve satır göster).
@@ -16,5 +18,5 @@ argument-hint: <kavram ya da dosya:satır>
 3. Beni test et: 2 soru sor (biri kavramsal, biri "bu kodda şu satırı değiştirirsem ne olur").
    Cevaplarımı bekle, sonra düzelt.
 4. Küçük bir alıştırma öner (15–30 dakika), çözümünü verme.
-5. `handbook/notes/<kavram>.md` dosyasına özet not yaz/güncelle:
+5. `<handbook>/notes/<kavram>.md` dosyasına özet not yaz/güncelle:
    tanım, projedeki yeri, alternatifler, öğrendiğim tuzaklar, kaynak linkleri.

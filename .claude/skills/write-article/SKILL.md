@@ -6,12 +6,14 @@ argument-hint: <makale numarası ya da konu — ör. "#5 overselling">
 
 # Makale taslağı: $ARGUMENTS
 
+> `<handbook>` = handbook reposunun kökü: şu an handbook reposundaysan `.`, başka bir repodaysan `../handbook`. Klasör yoksa oluştur.
+
 Kural: Her makale bir ölçüme dayanır. Rakam olmadan taslak yazma.
 
-1. `handbook/benchmarks/` ve ilgili reponun `bench/` klasöründe sonuçları ara.
+1. `<handbook>/benchmarks/` ve ilgili reponun `bench/` klasöründe sonuçları ara.
    Yoksa DUR ve şunu öner: hangi senaryo, hangi araç (k6, eval runner), hangi metrikler,
    kaç tekrar. Ölçüm planını issue metni olarak yaz.
-2. Varsa şu iskeletle `handbook/articles/NN-kebab-baslik.md` taslağı oluştur:
+2. Varsa şu iskeletle `<handbook>/articles/NN-kebab-baslik.md` taslağı oluştur:
    - **Başlık:** soru ya da sonuç içeren, rakamlı (ör. "3 yöntemle overselling: p99'u 4 kat düşüren tercih")
    - **Kanca (2–3 cümle):** gerçek dünya problemi (Trendyol kampanya günü vb.)
    - **Kurulum:** mimari, donanım, versiyonlar, veri boyutu — tekrarlanabilir olsun
