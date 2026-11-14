@@ -1,0 +1,12 @@
+stages:
+  - check
+
+runner-smoke:
+  stage: check
+  image: alpine:3.20
+  tags:
+    - orderflow
+  script:
+    - echo "OrderFlow runner calisiyor"
+    - uname -a
+    - head -2 /etc/os-release
