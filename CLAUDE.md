@@ -24,17 +24,24 @@ Junior geliştiriciyim ve öğrenmek için buradayım.
 - `articles/` — makale taslakları (`/write-article` ile)
 - `benchmarks/` — ölçüm sonuçları
 - `retro/` — faz sonu retroları (`F0.md`, `F1.md`...)
+- `notes/karar-defteri.md` — decision log: her kararın nedeni, alternatifi ve bedeli (`/log-decision` ile)
+- `articles/BACKLOG.md` — makale konuları; faz sonunda `/phase-retro` buradan seçer
 - `templates/` — diğer repolara kopyalanan dosyalar (servis CLAUDE.md'si)
 - `scripts/`, `gitlab-import/` — GitLab kurulum script'i ve issue CSV'leri
 - `.claude/`, `.gitlab/` — her repoya kopyalanan skill, agent, ayar ve şablonlar
 Klasör henüz yoksa ilk dosyayla birlikte oluştur.
 
 ## Yazım kuralları
-- Yazılar Türkçe; teknik terimler (outbox, saga, idempotency) çevrilmez. 
+- Yazılar Türkçe; teknik terimler (outbox, saga, idempotency) çevrilmez.
 - Commit mesajları ve MR başlıkları İngilizce (Conventional Commits).
 - Kısa paragraflar, somut örnekler. ADR'de bilinmeyen rakam için "ölçülecek" yaz ve spike issue öner;
   makalede ise rakam yoksa yazma (`/write-article` önce ölçüm ister).
 - Her ADR'de en az 2 seçenek ve her seçeneğin olumsuz tarafı.
+
+## Kayıt alışkanlığı
+- Oturumda bir ayar, yöntem ya da teknoloji seçildiyse oturum sonunda `/log-decision` öner.
+- Bir faz bittiğinde `/phase-retro` öner.
+- Aklıma gelen makale fikirlerini `articles/BACKLOG.md`'ye 💡 olarak ekle.
 
 ## Git ve iş akışı
 - Ana platform GitLab; GitLab işleri için `glab` kullan. GitHub sadece ayna: oraya push etme, PR açma.
