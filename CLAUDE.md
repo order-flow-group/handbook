@@ -9,7 +9,8 @@ LangChain), RAG ve MCP. Amaç öğrenmek, ölçmek ve makale yazmak. Polyrepo, G
 `order-flow-group` altında; GitHub sadece ayna.
 
 Bu repo: **handbook** — ADR'ler, öğrenme notları, makaleler, retrolar ve Claude kit'i.
-Burada uygulama kodu, Makefile ve CI yok; sadece Markdown ve script'ler.
+Burada uygulama kodu ve Makefile yok; sadece Markdown ve script'ler. Tek CI, runner'ı doğrulayan
+smoke-test pipeline'ı (`.gitlab-ci.yml`).
 Sözleşmeler: `order-flow-group/platform/contracts` (OpenAPI + AsyncAPI). Tek doğru kaynak orası.
 Servislerin mimari kuralları: `templates/CLAUDE.service.md`. ADR veya makale yazarken onu oku.
 
@@ -47,7 +48,7 @@ Klasör henüz yoksa ilk dosyayla birlikte oluştur.
 - Ana platform GitLab; GitLab işleri için `glab` kullan. GitHub sadece ayna: oraya push etme, PR açma.
 - Branch adı: `<issue-no>-<kısa-açıklama>` (ör. `1-adr-backend-dili`).
 - Commit: Conventional Commits (`docs:`, `chore:`, `feat:`).
-- `main` korumalı; sadece MR ile squash merge. Handbook'ta pipeline yok, yeşil pipeline şartı aranmaz.
+- `main` korumalı; sadece MR ile squash merge. MR'larda runner smoke-test pipeline'ı yeşil olmalı.
 - Issue'lar bu repoda; MR açıklamasına `Closes #N` yaz.
 - Asla force push, `main`'e doğrudan push veya secret commit etme.
 

@@ -103,6 +103,12 @@ Format: **Karar** · Neden · Alternatif · Bedeli · Özet (tek cümle)
 - **Bedeli:** Laptop kapalıyken CI çalışmaz; taşıma ek bir iş.
 - **Özet:** "Runner'ı önce lokalde Docker executor'la kurdum, sonra Oracle'daki VM'e taşıdım; lokal ile bulutun farkını, kaydı değiştirmeyi ve iki ortamı yönetmeyi yaşadım."
 
+### K-18 · Group runner, Docker executor, `orderflow` tag'i (ADR-002'nin uygulaması, 15 Kas)
+- **Neden:** *Kendi runner'ım:* GitLab.com'un paylaşımlı runner'larında ücretsiz CI dakikası sınırlı. Kendi makinemdeki runner bu sınıra takılmıyor. *Group runner:* Tek kayıtla `order-flow-group` altındaki bütün repolar aynı runner'ı kullanıyor, her repoya ayrı runner kaydetmek gerekmiyor. *Docker executor:* Her job temiz ve izole bir container'da çalışıyor. Job'un image'ını (`alpine`, `golang`) `.gitlab-ci.yml` belirliyor, makineye araç kurmak gerekmiyor. *Tag:* Job'lar `tags: [orderflow]` ile bu runner'ı açıkça seçiyor. Faz 7'de Oracle VM'e geçerken tag'i yeni runner'a vermek yetiyor. Tag'siz job'lar da çalışıyor, böylece tag'i unutan bir job "pending"de takılı kalmıyor.
+- **Alternatif:** Her repoya ayrı project runner. Shell executor (komutlar doğrudan host'ta çalışır, hızlı ama izole değil). Tag kullanmamak.
+- **Bedeli:** Bütün repolar tek runner'ı paylaşıyor. `concurrent` varsayılan olarak 1 olduğu için job'lar sırayla bekliyor; gerçek bekleme süresi ölçülecek. `docker.sock` mount edildiği için runner container'ı host'ta root yetkisine sahip. Tek kişilik projede bunu kabul ediyorum. Job'lara socket ayrıca açılırsa (ör. `docker build` için) job'lar da bu yetkiyi alır; F0-10'da buna dikkat edilecek. İlk job'larda image çekme süresi de ekleniyor. Runner laptopta çalıştığı için laptop kapalıyken pipeline "pending" bekliyor. "Pipelines must succeed" açık olduğu için o sırada MR'lar merge edilemiyor. Bu kısıt Faz 7'de runner Oracle VM'e taşınınca kalkacak.
+- **Özet:** "Dakika sınırına takılmamak için laptopuma group seviyesinde bir runner kurdum; her job ayrı bir Docker container'ında çalışıyor, bedeli laptop kapalıyken bekleyen pipeline'lar ve host'ta root yetkili bir runner."
+
 ## AI ile geliştirme
 
 ### K-17 · Claude Code'u CLAUDE.md, skill ve agent'larla donatmak (6–9 Kas)

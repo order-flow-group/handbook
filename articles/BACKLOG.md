@@ -22,6 +22,7 @@ Durum: 💡 fikir · 📝 taslak · ✅ yayında
 | 0.4 | Önce dizüstünde, sonra bulutta: GitLab Runner yolculuğu (1. bölüm) | Kendi runner'ını kurmak ne öğretir? | ADR-002, F0-06, ilk pipeline süreleri | 💡 |
 | 0.5 | .NET bilen biri neden Go seçti? Zaman kutulu bir ADR | Teknoloji seçimi nasıl belgelenir ve riski nasıl sınırlanır? | ADR-001, F0-09 sonucu | 💡 |
 | 0.6 | CRLF bir pipeline'ı nasıl bozar ve `.gitattributes` | Küçük ama gerçek bir Windows/Linux tuzağı | K-10 | 💡 (kısa LinkedIn postu) |
+| 0.7 | `docker.sock`'u mount etmek: runner'a host'un anahtarını vermek | Docker executor'ın güvenlik bedeli ne, alternatifleri (rootless, Kaniko, ayrı VM) neler? | K-18, `notes/gitlab-runner.md` | 💡 (kısa LinkedIn postu) |
 
 ## Faz 1 — Sipariş happy path
 | # | Başlık önerisi | Soru | Durum |
