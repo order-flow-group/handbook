@@ -89,6 +89,12 @@ Format: **Karar** · Neden · Alternatif · Bedeli · Özet (tek cümle)
 - **Neden:** En riskli bilinmeyenler (repo, CI, runner, compose) kod yokken çözülüyor. Faz 1'de sadece iş mantığına odaklanılıyor.
 - **Özet:** "Önce boş ama uçtan uca çalışan bir iskelet kurdum; altyapı sorunlarını iş mantığıyla karıştırmamak için."
 
+### K-19 · CI şablonu, onu kullanan bir repo varken yazılır; `go.yml` F0-09'a, `docker.yml` F0-10'a ertelendi (15 Kas)
+- **Neden:** Kullanan bir repo yokken yazılan şablon test edilemiyor; yeşil olduğu bilinmiyor, sadece tahmin ediliyor. `go.yml` (lint, test, build) için gerçek bir Go modülü, `docker.yml` için gerçek bir Dockerfile gerekiyor; ikisi de F0-09 ve F0-10'da doğuyor. F0-07'de bugün kullanılabilen `base.yml` ve `secret-scan.yml` yazıldı. Handbook bunları hemen `include` ile kullandı ve pipeline'ı yeşil oldu.
+- **Alternatif:** F0-07'nin ilk planı: bütün job şablonlarını (`lint`, `test`, `build`, `docker-build`, `secret-scan`) baştan, kullanan repo olmadan yazmak.
+- **Bedeli:** F0-07 kabul kriterlerinin bir kısmı (`lint`, `test`, `build`, `docker-build`) karşılanmadan kapanıyor; issue'ya bunun not edilmesi gerekiyor. F0-09 ve F0-10'un kapsamı büyüyor; iş artık iki repoya yayılıyor (ci-templates + order-service), yani iki MR. Zaman kutulu F0-09'un (ADR-001) 2 günlük süresi bu ek işten etkilenebilir.
+- **Özet:** "Şablonu, onu kullanan ilk repoyla birlikte yazdım; test edilmemiş bir şablon tahmindir, bedeli F0-09 ve F0-10'a eklenen iş."
+
 ## Teknoloji
 
 ### K-15 · Backend dili Go (ADR-001, 10 Kas)
