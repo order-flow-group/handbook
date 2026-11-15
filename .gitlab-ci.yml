@@ -1,11 +1,13 @@
-stages:
-  - check
+include:
+  - project: order-flow-group/platform/ci-templates
+    ref: main
+    file:
+      - templates/base.yml
+      - templates/secret-scan.yml
 
 runner-smoke:
-  stage: check
+  stage: lint
   image: alpine:3.20
-  tags:
-    - orderflow
   script:
     - echo "OrderFlow runner calisiyor"
     - uname -a

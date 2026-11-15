@@ -30,4 +30,5 @@ docker restart gitlab-runner                     # yeniden başlat
 
 ## Sınır
 
-Laptop kapalıyken pipeline'lar "pending" bekler.
+Laptop kapalıyken ya da uykudayken pipeline'lar "pending" bekler.
+Docker Desktop, oturum açılınca kendiliğinden başlayacak şekilde ayarlı (Settings → General → "Start Docker Desktop when you sign in"); runner da `--restart always` ile onunla birlikte kalkar.
