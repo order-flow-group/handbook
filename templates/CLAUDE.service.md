@@ -60,8 +60,14 @@ Bir değişikliği bitmiş saymadan önce `make lint test` çalıştır ve sonuc
 - Branch adı: `<issue-no>-<kısa-açıklama>` (ör. `12-post-orders`).
 - Commit: Conventional Commits (`feat(order): ...`, `fix:`, `chore:`, `docs:`, `test:`).
 - `main` korumalı; sadece MR + yeşil pipeline + squash merge.
-- MR açıklaması `Closes #N` içerir ve `.gitlab/merge_request_templates/default.md`'yi doldurur.
+- Issue'lar handbook'ta, bu repoda değil: issue komutlarında `glab issue ... -R order-flow-group/handbook` kullan.
+- MR açıklaması `Closes order-flow-group/handbook#N` içerir ve `.gitlab/merge_request_templates/default.md`'yi doldurur.
 - Asla force push, `main`'e doğrudan push veya secret commit etme.
+
+## Kayıt alışkanlığı
+- Oturumda bir ayar, yöntem ya da teknoloji seçildiyse oturum sonunda `/log-decision` öner
+  (karar defteri: `../handbook/notes/karar-defteri.md`).
+- Aklıma gelen makale fikirlerini `../handbook/articles/BACKLOG.md`'ye 💡 olarak ekle.
 
 ## Bilinen tuzaklar
 Claude bir hatayı iki kez yaparsa buraya bir satır eklenir.

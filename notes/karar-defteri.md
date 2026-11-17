@@ -115,6 +115,12 @@ Format: **Karar** · Neden · Alternatif · Bedeli · Özet (tek cümle)
 - **Bedeli:** Bütün repolar tek runner'ı paylaşıyor. `concurrent` varsayılan olarak 1 olduğu için job'lar sırayla bekliyor; gerçek bekleme süresi ölçülecek. `docker.sock` mount edildiği için runner container'ı host'ta root yetkisine sahip. Tek kişilik projede bunu kabul ediyorum. Job'lara socket ayrıca açılırsa (ör. `docker build` için) job'lar da bu yetkiyi alır; F0-10'da buna dikkat edilecek. İlk job'larda image çekme süresi de ekleniyor. Runner laptopta çalıştığı için laptop kapalıyken pipeline "pending" bekliyor. "Pipelines must succeed" açık olduğu için o sırada MR'lar merge edilemiyor. Bu kısıt Faz 7'de runner Oracle VM'e taşınınca kalkacak.
 - **Özet:** "Dakika sınırına takılmamak için laptopuma group seviyesinde bir runner kurdum; her job ayrı bir Docker container'ında çalışıyor, bedeli laptop kapalıyken bekleyen pipeline'lar ve host'ta root yetkili bir runner."
 
+### K-20 · Sözleşme lint'i Spectral, `--fail-severity=warn` (F0-08, 17 Kas)
+- **Neden:** *Spectral:* OpenAPI ve AsyncAPI'yi tek araçla lint ediyor; `contracts` reposunda ikisi de olacak. Kurallar `.spectral.yaml`'da duruyor ve genişletilebiliyor. *`--fail-severity=warn`:* Spectral varsayılan olarak sadece `error` bulgularında pipeline'ı kırar; bu ayarla uyarılar da kırıyor, böylece sözleşme baştan temiz kalıyor. Uygulama: `contracts` reposu + ci-templates `spec-lint.yml`.
+- **Alternatif:** Redocly CLI (OpenAPI'de güçlü, AsyncAPI desteği zayıf). Sadece şema doğrulayan bir validator (yapıyı kontrol eder, stil ve tutarlılık kurallarını değil).
+- **Bedeli:** Küçük stil uyarıları da MR'ı durduruyor. Kapatılacak ya da seviyesi düşürülecek kurallar `.spectral.yaml`'da tek tek yönetiliyor.
+- **Özet:** "Sözleşmeleri tek araçla kontrol etmek için Spectral seçtim ve uyarıları da hata saydım; böylece sözleşme baştan temiz kalıyor, her istisnayı bilerek açıyorum."
+
 ## AI ile geliştirme
 
 ### K-17 · Claude Code'u CLAUDE.md, skill ve agent'larla donatmak (6–9 Kas)

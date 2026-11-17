@@ -9,13 +9,13 @@ GitLab.com'un ücretsiz CI dakikaları sınırlı. Pipeline'ları kendi runner'�
 
 ## Seçenekler
 
-| Kriter | Lokal (Monster notebook, Docker executor) | Oracle Cloud Always Free ARM VM | GitLab.com paylaşımlı runner |
-| --- | --- | --- | --- |
-| Başlama süresi | Bugün | Hesap + VM + ağ kurulumu | Hemen |
-| Erişilebilirlik | Laptop açıkken | 7/24 | 7/24 |
-| Maliyet | Yok | Yok (kota içinde) | Ücretsiz dakika sınırı |
-| Öğrenme | Runner'ın çalışma mantığı, Docker executor | Linux sunucu, systemd, güvenlik | Az |
-| Mimari | x86 | ARM (image'lar multi-arch olmalı) | x86 |
+| Kriter                     | Lokal (Monster notebook, Docker executor)        | Oracle Cloud Always Free ARM VM           | GitLab.com paylaşımlı runner |
+| -------------------------- | ------------------------------------------------ | ----------------------------------------- | ---------------------------- |
+| Başlama süresi             | Bugün                                            | Hesap + VM + ağ kurulumu                  | Hemen                        |
+| Erişilebilirlik            | Laptop açıkken                                   | 7/24                                      | 7/24                         |
+| Maliyet                    | Yok                                              | Yok (kota içinde)                         | Ücretsiz dakika sınırı       |
+| Öğrenme                    | Runner'ın çalışma mantığı, Docker executor       | Linux sunucu, systemd, güvenlik           | Az                           |
+| Mimari                     | x86                                              |   ARM  (image'lar multi-arch olmalı)      | x86                          |
 
 ## Karar
 İki aşamalı: Faz 0'da runner'ı lokal makinede Docker executor ile kur. Faz 7'de k3s için açılacak Oracle ARM VM'e taşı ve lokal runner'ı kaldır.
